@@ -1,13 +1,13 @@
-lazy val akkaHttpVersion  = "10.0.11"
-lazy val akkaVersion      = "2.5.9"
-lazy val scalaTestVersion = "3.0.4"
+lazy val akkaHttpVersion  = "10.1.3"
+lazy val akkaVersion      = "2.5.13"
+lazy val scalaTestVersion = "3.0.5"
 lazy val logbackVersion   = "1.2.3"
 
 lazy val root = (project in file(".")).settings(inThisBuild(List(
   name            := "akka-streams",
   organization    := "com.oschrenk.learning",
   javaOptions ++= Seq("--add-modules", "java.xml.bind"),
-  scalaVersion    := "2.12.4",
+  scalaVersion    := "2.12.6",
   scalacOptions ++= Seq(
     "-deprecation",                      // Emit warning and location for usages of deprecated APIs.
     "-encoding", "utf-8",                // Specify character encoding used by source files.
@@ -29,7 +29,8 @@ lazy val root = (project in file(".")).settings(inThisBuild(List(
     "-Xlint:delayedinit-select",         // Selecting member of DelayedInit.
     "-Xlint:doc-detached",               // A Scaladoc comment appears to be detached from its element.
     "-Xlint:inaccessible",               // Warn about inaccessible types in method signatures.
-    "-Xlint:infer-any",                  // Warn when a type argument is inferred to be `Any`.
+    // infer-any makes some trouble, see https://issues.scala-lang.org/browse/SI-9211
+    //"-Xlint:infer-any",                  // Warn when a type argument is inferred to be `Any`.
     "-Xlint:missing-interpolator",       // A string literal appears to be missing an interpolator id.
     "-Xlint:nullary-override",           // Warn when non-nullary `def f()' overrides nullary `def f'.
     "-Xlint:nullary-unit",               // Warn when nullary methods return Unit.
@@ -45,7 +46,6 @@ lazy val root = (project in file(".")).settings(inThisBuild(List(
     "-Ywarn-dead-code",                  // Warn when dead code is identified.
     "-Ywarn-extra-implicit",             // Warn when more than one implicit parameter section is defined.
     "-Ywarn-inaccessible",               // Warn about inaccessible types in method signatures.
-    "-Ywarn-infer-any",                  // Warn when a type argument is inferred to be `Any`.
     "-Ywarn-nullary-override",           // Warn when non-nullary `def f()' overrides nullary `def f'.
     "-Ywarn-nullary-unit",               // Warn when nullary methods return Unit.
     "-Ywarn-numeric-widen",              // Warn when numerics are widened.
