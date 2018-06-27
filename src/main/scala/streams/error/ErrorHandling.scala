@@ -19,7 +19,9 @@ object ErrorHandling extends App {
       if (element == 3) throw new Exception("I don't like 3")
       else total + element
     }
-    .withAttributes(ActorAttributes.supervisionStrategy(Supervision.resumingDecider))
+    .withAttributes(ActorAttributes.supervisionStrategy(Supervision.stoppingDecider))
+//    .withAttributes(ActorAttributes.supervisionStrategy(Supervision.resumingDecider))
+//    .withAttributes(ActorAttributes.supervisionStrategy(Supervision.restartingDecider))
     .runForeach(println)
     .onComplete {
       case Failure(_) =>

@@ -24,10 +24,10 @@ object MatAndRecovery extends App {
     .map(_ => scala.util.Random.nextInt(6).toString)
     // somebody tell me a number between 0 and 5
     .map(e => if (e == "3") throw new IllegalArgumentException("Bang") else e)
-    //    .recover{case _: Exception => "Dodge"}
+//    .recover{case _: Exception => "Dodge"}
     .toMat(Sink.foreach(println))(Keep.both).run()
 
-  val a = akka.pattern.after(duration = 5.seconds, using = system.scheduler)(Future.successful(cancel.cancel()))
+  val a = akka.pattern.after(duration = 10.seconds, using = system.scheduler)(Future.successful(cancel.cancel()))
   val f = Future.firstCompletedOf(Seq(done, a))
 
   f.onComplete{
